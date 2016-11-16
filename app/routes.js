@@ -28,10 +28,10 @@ module.exports = function(app, passport){
     // show the signup form
     // show the signup form
     app.get('/signup', function(req, res) {
-
         // render the page and pass in any flash data if it exists
         res.render('signup', { message: req.flash('signupMessage') });
     });
+    
     // process the signup form
     app.post('/signup', passport.authenticate('local-signup', {
         successRedirect : '/profile', // redirect to the secure profile section
@@ -63,6 +63,31 @@ module.exports = function(app, passport){
         });
 
     });
+
+        // CREATE new trainingslog
+    app.post('/trainingsprogram/logTraining', function(req, res, next) {
+
+        exerciseprogram.find({}, function(err, exercise) {
+
+            var newTrainingsLog = new trainingslog({
+                training            : {
+                    trainingslog    : exercise
+                }
+            });
+
+            newTrainingsLog.save(function(err){
+                if (err) {
+                    // If it failed, return error            
+                    res.send("There was a problem adding the information to the database.");
+                }
+                else {
+                    // And forward to success page
+                    console.log('Trainingslog saved successfully!');
+                    res.redirect('/profile');
+                }
+            });
+        });
+    })
 
     // TRAININGPROGRAM ======================
     app.get('/trainingsprogram', function(req, res) {
@@ -110,31 +135,6 @@ module.exports = function(app, passport){
                 console.log('Exercise saved successfully!');
                 res.redirect('/trainingsprogram');
             }
-        });
-    })
-
-    // CREATE new trainingslog
-    app.post('/trainingsprogram/logTraining', function(req, res, next) {
-
-        exerciseprogram.find({}, function(err, exercise) {
-
-            var newTrainingsLog = new trainingslog({
-                training            : {
-                    trainingslog    : exercise
-                }
-            });
-
-            newTrainingsLog.save(function(err){
-                if (err) {
-                    // If it failed, return error            
-                    res.send("There was a problem adding the information to the database.");
-                }
-                else {
-                    // And forward to success page
-                    console.log('Trainingslog saved successfully!');
-                    res.redirect('/profile');
-                }
-            });
         });
     })
 };
