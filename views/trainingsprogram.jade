@@ -5,6 +5,26 @@ block content
         div.container           
             form(action='/trainingsprogram/logTraining', method='post', name='logTraining')
                 div.row
+                    div.col-xs-12
+                        nav.navbar.navbar-inverse
+                            .container-fluid
+                                .navbar-header
+                                    a.navbar-brand(href='#') Ingeniør Fitness
+                                ul.nav.navbar-nav
+                                    li.active
+                                        a(href='/profile')
+                                            span.glyphicon.glyphicon-user 
+                                            |  Profile
+                                    li
+                                        a(href='/trainingsprogram') Træningsprogram
+                                    li
+                                        a(href='/trainingslog') Træningslog
+                                ul.nav.navbar-nav.navbar-right
+                                    li
+                                        a(href='#')
+                                            span.glyphicon.glyphicon-log-out
+                                            |  Logout  
+                div.row
                     div.col-xs-12.text-center.textmargin
                         h1 Træningsprogram
                 div.row

@@ -11,6 +11,10 @@ body {
 
   }
 
+  .navwidth {
+    min-width: 100%;
+  }
+
 
   .btncolor{
     background-color: #FFF266;
