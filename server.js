@@ -15,7 +15,6 @@ var gracefulShutdown;
 
 var dbURI = 'mongodb://fitnesswebappdb:fitnesswebappdb@ds013545.mlab.com:13545/heroku_rhnsjtgw'
 
-
 // configuration ===============================================================
 mongoose.connect(dbURI); // connect to our database
 
