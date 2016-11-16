@@ -1,0 +1,38 @@
+body {
+  font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
+  color: #FFF266;
+  }
+
+  .index {
+    min-height: 100vh;
+    background-color: #5C755E;
+    background-image: url("https://www.urbangym.dk/sites/default/files/imageblock/bg_hp_01.png");
+    background-size:cover;
+
+  }
+
+
+  .btncolor{
+    background-color: #FFF266;
+    color: #000000
+  }
+
+  .textmarginsmall {
+    margin-bottom: 15px;
+  }
+
+  .textmargin {
+    margin-bottom: 30px;
+  }
+
+  .textmarginmedium {
+    margin-bottom: 80px;
+  }
+
+  .textmarginbig {
+    margin-bottom: 150px;
+  }
+
+  .textcolor{
+    color: #000000;
+  }

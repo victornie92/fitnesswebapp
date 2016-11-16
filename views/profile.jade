@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    div.index
+        div.container
+            div.row
+                div.col-xs-12.text-center
+                    h1 Profile Page
+            div.row
+                div.col-xs-12.text-center
+                    a(href='/logout').btn.btncolor.btn-primary Logout
+            div.row
+                div.col-xs-8.col-xs-offset-2.textmarginbig         
+                each user in userlist
+                    l #{user.local.password}
+                    br

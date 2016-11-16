@@ -1,0 +1,27 @@
+extends layout
+
+block content
+    div.index
+        div.container
+            div.row
+                div.col-xs-12.text-center
+                    h1 Signup
+            div.row
+                form(action='/signup', method='post')
+                    div.col-xs-8.col-xs-offset-2
+                        .form-group
+                            label Email:
+                            input.form-control(type='text', name='email')
+                        .form-group
+                            label Password:
+                            input.form-control(type='password', name='password')
+                        button.btn.btn-warning.btn-lg(type='submit') Signup
+            div.row
+                div.col-xs-8.col-xs-offset-2
+                    hr
+                    p
+                    | Already have an account?  
+                    a(href='/login') Login
+                    p
+                    | Or go 
+                    a(href='/') home
