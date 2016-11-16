@@ -1,0 +1,25 @@
+extends layout
+
+block content
+    div.index
+        div.container
+            div.row
+                div.col-xs-12.text-center.textmargin
+                    h1 Tilføj ny øvelse
+            div.row
+                div.col-xs-4.textmargin
+                    form(action='/trainingsprogram/addnewexercise', method='post', name='addnewexercise')
+                        .form-group
+                            label(for='exerc') Øvelse:
+                            input#exerc.form-control(type="text", name="exercise")
+                        .form-group
+                            label(for='desc') Beskrivelse:
+                            input#desc.form-control(type="text", name="description")
+                        .form-group
+                            label(for='Sets') Sets:
+                            input#Sets.form-control(type="text", name="setNum")
+                        .form-group
+                            label(for='setNum') Reps/Tid:
+                            input#setNum.form-control(type="text", name="repsOrTime")       
+                        .form-group
+                            button(type="submit").btn.btncolor.btn-primary Submit

@@ -1,4 +1,6 @@
-var User = require('../app/models/user');
+var user = require('../app/models/user');
+var exerciseprogram =  require('../app/models/exerciseprogram');
+var trainingslog =  require('../app/models/trainingslog');
 
 module.exports = function(app, passport){
 
@@ -42,16 +44,10 @@ module.exports = function(app, passport){
     // we will use route middleware to verify this (the isLoggedIn function)
     app.get('/profile', isLoggedIn, function(req, res) {
 
-        User.find({}, function(err, users) {
-        //if (err) throw err;    
-
-        res.render('profile', { title: 'FitnessApp', userlist : users });
+        user.find({}, function(err, users) {
+            res.render('profile', { title: 'FitnessApp', userlist : users });
 
         });
-
-        /*res.render('profile', {
-            user : req.user // get the user out of session and pass to template
-        });*/
     });
 
     // LOGOUT ==============================
@@ -59,6 +55,88 @@ module.exports = function(app, passport){
         req.logout();
         res.redirect('/');
     });
+
+    // TRAININGLOG =========================
+    app.get('/trainingslog', function(req, res) {
+        trainingslog.find({}, function(err, tLog) {
+            res.render('trainingslog', {title: 'FitnessApp', tLog : tLog})
+        });
+
+    });
+
+    // TRAININGPROGRAM ======================
+    app.get('/trainingsprogram', function(req, res) {
+        var allUsers;
+
+        user.find({}, function(err, users) {
+            allUsers = users
+        });
+
+        exerciseprogram.find({}, function(err, exerciseprogram){
+            res.render('trainingsprogram', {title: 'FitnessApp', exercise : exerciseprogram, userlist : allUsers})
+        });
+        
+    })
+
+    // ADDNEWEXERCISE =======================
+    app.get('/trainingsprogram/addnewexercise', function(req, res) {
+        res.render('addnewexercise', {title: 'FitnessApp'})
+    })
+
+    // CREATE new exercise
+    app.post('/trainingsprogram/addnewexercise', function(req, res, next) {
+
+        var ex = req.body.exercise;
+        var des = req.body.description;
+        var se = req.body.setNum;
+        var rep = req.body.repsOrTime;
+
+        var newExercise = new exerciseprogram({
+            exerciseprogram         : {
+                exercise            : ex,
+                description         : des,
+                setNum              : se,
+                repsOrTime          : rep
+            }
+        });
+
+        newExercise.save(function(err){
+            if (err) {
+                // If it failed, return error            
+                res.send("There was a problem adding the information to the database.");
+            }
+            else {
+                // And forward to success page
+                console.log('Exercise saved successfully!');
+                res.redirect('/trainingsprogram');
+            }
+        });
+    })
+
+    // CREATE new trainingslog
+    app.post('/trainingsprogram/logTraining', function(req, res, next) {
+
+        exerciseprogram.find({}, function(err, exercise) {
+
+            var newTrainingsLog = new trainingslog({
+                training            : {
+                    trainingslog    : exercise
+                }
+            });
+
+            newTrainingsLog.save(function(err){
+                if (err) {
+                    // If it failed, return error            
+                    res.send("There was a problem adding the information to the database.");
+                }
+                else {
+                    // And forward to success page
+                    console.log('Trainingslog saved successfully!');
+                    res.redirect('/profile');
+                }
+            });
+        });
+    })
 };
 
 // route middleware to make sure a user is logged in

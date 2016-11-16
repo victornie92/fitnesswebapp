@@ -7,10 +7,13 @@ block content
                 div.col-xs-12.text-center
                     h1 Profile Page
             div.row
+                div.col-xs-8.col-xs-offset-2
+                    p Opret et træningsskema eller tjek din træningslog
+            div.row
                 div.col-xs-12.text-center
                     a(href='/logout').btn.btncolor.btn-primary Logout
             div.row
-                div.col-xs-8.col-xs-offset-2.textmarginbig         
-                each user in userlist
-                    l #{user.local.email}
-                    br
+                div.col-xs-2.col-xs-offset-4.textmargin
+                    a(href='/trainingslog').btn.btncolor.btn-primary Træningslog
+                div.col-xs-2.col-xs
+                    a(href='/trainingsprogram').btn.btncolor.btn-primary Opret træningsprogram

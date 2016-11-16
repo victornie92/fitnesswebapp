@@ -1,0 +1,33 @@
+extends layout
+
+block content
+    div.index
+        div.container
+            form(action='/trainingsprogram/logTraining', method='post', name='logTraining')
+                div.row
+                    div.col-xs-12.text-center
+                        h1 Træningsprogram
+                div.row
+                    div.col-xs-8.col-xs-offset-1
+                        p Her kan du oprette dit eget træningsprogram
+                div.row
+                    div.col-xs-8.col-xs-offset-2.textmargin
+                        table.table
+                            thead
+                                tr
+                                    th Øvelse
+                                    th Beskrivelse
+                                    th Sets
+                                    th Reps/Tid
+                            tbody
+                                each ex in exercise
+                                    tr
+                                        td #{ex.exerciseprogram.exercise}
+                                        td #{ex.exerciseprogram.description}
+                                        td #{ex.exerciseprogram.setNum}
+                                        td #{ex.exerciseprogram.repsOrTime}
+                div.row
+                    div.col-xs-2.col-xs-offset-4.textmargin
+                        a(href='/trainingsprogram/addnewexercise').btn.btncolor.btn-primary Tilføj ny øvelse
+                    div.col-xs-2.textmargin
+                        button(type="submit").btn.btncolor.btn-primary Gemmenfør øvelsesprogram

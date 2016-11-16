@@ -1,0 +1,28 @@
+extends layout
+
+block content
+    div.index
+        div.container
+            div.row
+                div.col-xs-12.text-center
+                    h1 Træningslog
+            div.row
+                div.col-xs-8.col-xs-offset-2.textmargin
+                    p Her kan du se din træningslog
+            div.row
+                each log, i in tLog
+                    div.col-xs-8.col-xs-offset-2.textmargin
+                        table.table
+                            thead
+                                tr
+                                    th Øvelse
+                                    th Beskrivelse
+                                    th Sets
+                                    th Reps/Tid
+                            tbody
+                                each trainingslog in log.training.trainingslog
+                                    tr 
+                                        td #{trainingslog.exerciseprogram.exercise}
+                                        td #{trainingslog.exerciseprogram.description}
+                                        td #{trainingslog.exerciseprogram.setNum}
+                                        td #{trainingslog.exerciseprogram.repsOrTime} 
