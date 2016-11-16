@@ -7,10 +7,11 @@ block content
                 div.col-xs-12.text-center.textmargin
                     h1 Træningslog
             div.row
-                div.col-xs-8.col-xs-offset-2.textmargin
+                div.col-xs-4.col-xs-offset-2.textmargin
                     p Her kan du se din træningslog
-                form(action='/trainingslog/delete', method='post', name='delete')                
-                    button(type="delete").btn.btncolor.btn-primary Slet alle træninglogs
+                div.col-xs-2.col-xs-offset-2.textmargin
+                    form(action='/trainingslog/delete', method='post', name='delete')                
+                        button(type="delete").btn.btncolor.btn-primary Slet alle træninglogs
             div.row
                 each log, i in tLog
                     div.col-xs-8.col-xs-offset-2.textmargin

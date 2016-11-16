@@ -44,7 +44,6 @@ module.exports = function(app, passport){
     // we will want this protected so you have to be logged in to visit
     // we will use route middleware to verify this (the isLoggedIn function)
     app.get('/profile', isLoggedIn, function(req, res) {
-
         user.find({}, function(err, users) {
             res.render('profile', { title: 'FitnessApp', userlist : users });
 
@@ -58,7 +57,7 @@ module.exports = function(app, passport){
     });
 
     // TRAININGLOG =========================
-    app.get('/trainingslog', function(req, res) {
+    app.get('/trainingslog',isLoggedIn, function(req, res) {
         trainingslog.find({}, function(err, tLog) {
             res.render('trainingslog', {title: 'FitnessApp', tLog : tLog})
         });
@@ -103,7 +102,7 @@ module.exports = function(app, passport){
     })
 
     // TRAININGPROGRAM ======================
-    app.get('/trainingsprogram', function(req, res) {
+    app.get('/trainingsprogram',isLoggedIn, function(req, res) {
         var allUsers;
 
         user.find({}, function(err, users) {
@@ -117,7 +116,7 @@ module.exports = function(app, passport){
     });
 
     // ADDNEWEXERCISE =======================
-    app.get('/trainingsprogram/addnewexercise', function(req, res) {
+    app.get('/trainingsprogram/addnewexercise',isLoggedIn, function(req, res) {
         res.render('addnewexercise', {title: 'FitnessApp'})
     });
 

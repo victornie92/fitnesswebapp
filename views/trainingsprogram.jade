@@ -2,13 +2,13 @@ extends layout
 
 block content
     div.index
-        div.container
+        div.container           
             form(action='/trainingsprogram/logTraining', method='post', name='logTraining')
                 div.row
                     div.col-xs-12.text-center.textmargin
                         h1 Træningsprogram
                 div.row
-                    div.col-xs-8.col-xs-offset-1.textmargin
+                    div.col-xs-12.text-center.textmargin
                         p Her kan du oprette dit eget træningsprogram
                 div.row
                     div.col-xs-8.col-xs-offset-2.textmargin
@@ -27,13 +27,15 @@ block content
                                         td #{ex.exerciseprogram.setNum}
                                         td #{ex.exerciseprogram.repsOrTime}
                 div.row
-                    div.col-xs-2.col-xs-offset-2.textmargin
+                    div.col-xs-12.text-center.textmargin
                         a(href='/trainingsprogram/addnewexercise').btn.btncolor.btn-primary Tilføj ny øvelse
-                    div.col-xs-3.textmargin
-                        button(type="submit").btn.btncolor.btn-primary Gemmenfør øvelsesprogram
-                    div.col-xs-4.textmargin
-                        form(action='/trainingsprogram/delete', method='post', name='delete')                
-                            button(type="delete").btn.btncolor.btn-primary Slet alle øvelser
+                div.row   
+                    div.col-xs-12.text-center.textmargin
+                        button(type="submit").btn.btncolor.btn-primary Gemmenfør øvelsesprogram                        
+            form(action='/trainingsprogram/delete', method='post', name='delete')
+                div.row
+                    div.col-xs-12.text-center.offset-2
+                        button(type="delete").btn.btncolor.btn-primary Slet alle øvelser
                    
 
                     
