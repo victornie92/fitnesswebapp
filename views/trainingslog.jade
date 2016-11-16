@@ -2,13 +2,15 @@ extends layout
 
 block content
     div.index
-        div.container
+        div.container            
             div.row
                 div.col-xs-12.text-center
                     h1 Træningslog
             div.row
                 div.col-xs-8.col-xs-offset-2.textmargin
                     p Her kan du se din træningslog
+                form(action='/trainingslog/delete', method='post', name='delete')                
+                    button(type="delete").btn.btncolor.btn-primary Slet alle træninglogs
             div.row
                 each log, i in tLog
                     div.col-xs-8.col-xs-offset-2.textmargin

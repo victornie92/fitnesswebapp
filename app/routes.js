@@ -1,6 +1,7 @@
 var user = require('../app/models/user');
 var exerciseprogram =  require('../app/models/exerciseprogram');
 var trainingslog =  require('../app/models/trainingslog');
+var mongoose = require('mongoose');
 
 module.exports = function(app, passport){
 
@@ -64,6 +65,18 @@ module.exports = function(app, passport){
 
     });
 
+    // REMOVE ALL trainingslogs
+    app.post('/trainingslog/delete', function (req, res) {
+       trainingslog.remove(function (err) {
+            if (!err) {
+            console.log("removed");
+            return res.redirect('/trainingslog');
+            } else {
+            console.log(err);
+            }
+        });
+    });
+
         // CREATE new trainingslog
     app.post('/trainingsprogram/logTraining', function(req, res, next) {
 
@@ -101,12 +114,12 @@ module.exports = function(app, passport){
             res.render('trainingsprogram', {title: 'FitnessApp', exercise : exerciseprogram, userlist : allUsers})
         });
         
-    })
+    });
 
     // ADDNEWEXERCISE =======================
     app.get('/trainingsprogram/addnewexercise', function(req, res) {
         res.render('addnewexercise', {title: 'FitnessApp'})
-    })
+    });
 
     // CREATE new exercise
     app.post('/trainingsprogram/addnewexercise', function(req, res, next) {
@@ -136,8 +149,24 @@ module.exports = function(app, passport){
                 res.redirect('/trainingsprogram');
             }
         });
-    })
+    });
+
+    // REMOVE ALL EXERCISES
+    app.post('/trainingsprogram/delete', function (req, res) {
+       exerciseprogram.remove(function (err) {
+            if (!err) {
+            console.log("removed");
+            return res.redirect('/trainingsprogram');
+            } else {
+            console.log(err);
+            }
+        });
+    });
+
 };
+
+
+
 
 // route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next) {

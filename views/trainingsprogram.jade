@@ -27,7 +27,13 @@ block content
                                         td #{ex.exerciseprogram.setNum}
                                         td #{ex.exerciseprogram.repsOrTime}
                 div.row
-                    div.col-xs-2.col-xs-offset-4.textmargin
+                    div.col-xs-2.col-xs-offset-2.textmargin
                         a(href='/trainingsprogram/addnewexercise').btn.btncolor.btn-primary Tilføj ny øvelse
-                    div.col-xs-2.textmargin
+                    div.col-xs-3.textmargin
                         button(type="submit").btn.btncolor.btn-primary Gemmenfør øvelsesprogram
+                    div.col-xs-4.textmargin
+                        form(action='/trainingsprogram/delete', method='post', name='delete')                
+                            button(type="delete").btn.btncolor.btn-primary Slet alle øvelser
+                   
+
+                    
