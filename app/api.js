@@ -13,7 +13,7 @@ ExerciseProgram.methods(['get', 'put', 'post', 'delete']);
 ExerciseProgram.register(router, '/exerciseprogram')
 traningslog.methods(['get', 'post', 'delete']);
 traningslog.register(router, '/trainingslog')
-user.methods(['post','put']);
+user.methods(['get','post','put']);
 user.register(router, '/user')
 
 

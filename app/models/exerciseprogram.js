@@ -27,6 +27,7 @@ var mongoose = restful.mongoose;
 
 //Schema
 var exerciseprogramSchema = new mongoose.Schema({
+    
     exerciseprogram : {
         exercise    : String,
         description : String,
