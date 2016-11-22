@@ -17,10 +17,10 @@ var gracefulShutdown;
 
 // =====================================================================
 //Til mlab
-//var dbURI = 'mongodb://fitnesswebappdb:fitnesswebappdb@ds013545.mlab.com:13545/heroku_rhnsjtgw'
+var dbURI = 'mongodb://fitnesswebappdb:fitnesswebappdb@ds013545.mlab.com:13545/heroku_rhnsjtgw'
 
 //Til lokalt
-var dbURI = 'mongodb://localhost/FitnessDB'
+//var dbURI = 'mongodb://localhost/FitnessDB'
 
 // =====================================================================
 
