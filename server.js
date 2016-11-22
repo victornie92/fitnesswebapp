@@ -15,7 +15,14 @@ var session      = require('express-session');
 var gracefulShutdown;
 //var dbURI = require('./config/database.js');
 
-var dbURI = 'mongodb://fitnesswebappdb:fitnesswebappdb@ds013545.mlab.com:13545/heroku_rhnsjtgw'
+// =====================================================================
+//Til mlab
+//var dbURI = 'mongodb://fitnesswebappdb:fitnesswebappdb@ds013545.mlab.com:13545/heroku_rhnsjtgw'
+
+//Til lokalt
+var dbURI = 'mongodb://localhost/FitnessDB'
+
+// =====================================================================
 
 // configuration ===============================================================
 mongoose.connect(dbURI); // connect to our database
@@ -69,6 +76,10 @@ process.on('SIGTERM', function() {
   });
 });
 
+app.use(bodyParser.json());
+//routes for restful api
+app.use('/api', require('./app/api'));
+
 require('./config/passport')(passport); // pass passport for configuration
 
 // set up our express application
@@ -88,6 +99,8 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 
 // routes ======================================================================
 require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
+
+
 
 // launch ======================================================================
 app.listen(port);
