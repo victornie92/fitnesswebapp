@@ -12,7 +12,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
 
-app.use(allowCrossDomain);
+
 
 var gracefulShutdown;
 //var dbURI = require('./config/database.js');
@@ -77,6 +77,16 @@ process.on('SIGTERM', function() {
     process.exit(0);
   });
 });
+
+var allowCrossDomain = function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+
+    next();
+}
+
+app.use(allowCrossDomain);
 
 app.use(bodyParser.json());
 //routes for restful api
